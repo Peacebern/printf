@@ -2,26 +2,25 @@
 #define MAIN_H
 
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdarg.h>
-#include <stdio.h>
-#include <limits.h>
 
 /**
-* struct op - flag / function object
-* @c: flag
-* @f: function
+* struct convert - defines a structure for symbols and functions
+*
+* @sym: The operator
+* @f: The function associated
 */
-
-typedef struct op
+struct convert
 {
-	char *c;
+	char *sym;
 	int (*f)(va_list);
-} op_t;
+};
+typedef struct convert conver_t;
 
+/*Main functions*/
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
-int (*func_get(char s))(va_list list_ar);
-int _putchar(char c);
-int print_c(va_list list_ar);
-int print_s(va_list list_ar);
+int _write_char(char);
 
 #endif
