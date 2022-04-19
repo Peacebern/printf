@@ -20,5 +20,6 @@ The available convertion specifiers are:
 
 ## Authors of this project:
 
-- `Ayobami` @gmail.com
-- `Peacebern` peace8282bern@gmail.com
+*Peace Bernard* - [Github](https://github.com/Peacebern)
+
+*Olawale Ahmed* - [Github](https://github.com/ayobamy) 
