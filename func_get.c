@@ -1,11 +1,11 @@
 #include "main.h"
 /*
-* get_func - search and return the correct function
+* func_get - search and return the correct function
 * @s: array to check
 * Return: return a function (if written correctly)
 */
 
-int (*get_func(char s))(va_list)
+int (*func_geti(char s))(va_list)
 {
 	op_t ops[] = {
 		{"c", print_c},

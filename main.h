@@ -19,3 +19,7 @@ typedef struct op
 } op_t;
 
 int _printf(const char *format, ...);
+int (*func_get(char s))(va_list ar_list);
+int _putchar(char c);
+
+#endif
