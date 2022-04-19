@@ -5,7 +5,7 @@
 * Return: return a function (if written correctly)
 */
 
-int (*func_geti(char s))(va_list)
+int (*func_get(char s))(va_list)
 {
 	op_t ops[] = {
 		{"c", print_c},
