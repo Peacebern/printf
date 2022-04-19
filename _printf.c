@@ -1,50 +1,39 @@
 #include "main.h"
 
 /**
- * _printf - a function to prrint to the console
- * @format: an array to print and check the type
- *
- * Return: counts of character printed
+ * _printf - Receives the main string and all the necessary parameters to
+ * print a formated string
+ * @format: A string containing all the desired characters
+ * Return: A total count of the characters printed
  */
 
 int _printf(const char *format, ...)
 {
-	int count = -1;
+	int printed_chars;
+	conver_t f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{"b", print_binary},
+		{"r", print_reversed},
+		{"R", rot13},
+		{"u", unsigned_integer},
+		{"o", print_octal},
+		{"x", print_hex},
+		{"X", print_heX},
+		{NULL, NULL}
+	};
+	va_list arg_list;
 
-	if (format != NULL)
-	{
-		int i;
-		va_list list_ar;
-		int (*o)(va_list);
+	if (format == NULL)
+		return (-1);
 
-		va_start(list_ar, format);
+	va_start(arg_list, format);
 
-		if (format[0] == '%' && format[1] == '\0')
-			return (-1);
-
-		count = 0;
-
-		for (i = 0; format[i] != '\0'; i++)
-		{
-			if (format[i] == '%')
-			{
-				if (format[i + 1] == '%')
-				{
-					count += _putchar(format[i]);
-					i++;
-				}
-				else if (format[i + 1] != '\0')
-				{
-					o = func_get(format[i + 1]);
-					count += (o ? o(list_ar) : _putchar(format[i] + _putchar(format[i + 1]));
-					i++;
-				}
-			}
-			else
-				count += _putchar(format[i]);
-		}
-		va_end(list_ar);
-	}
-
-	return (count);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed_chars);
 }
